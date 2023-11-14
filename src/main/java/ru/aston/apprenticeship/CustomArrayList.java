@@ -10,8 +10,7 @@ public class CustomArrayList<E> {
     private Object[] elements;
 
     public CustomArrayList() {
-        this.size = 0;
-        this.elements = new Object[DEFAULT_SIZE];
+        this(DEFAULT_SIZE);
     }
 
     public CustomArrayList(int initialCapacity) {
@@ -20,6 +19,9 @@ public class CustomArrayList<E> {
     }
 
     public void add(int index, E element) {
+        if(index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
         ensureCapacity(size + 1);
         System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;
@@ -42,9 +44,7 @@ public class CustomArrayList<E> {
     }
 
     public E get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        validateIndex(index);
         return (E) elements[index];
     }
 
@@ -53,9 +53,7 @@ public class CustomArrayList<E> {
     }
 
     public void remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
+        validateIndex(index);
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         elements[size - 1] = null;
         size--;
@@ -141,6 +139,12 @@ public class CustomArrayList<E> {
             Object[] newElements = new Object[newCapacity];
             System.arraycopy(elements, 0, newElements, 0, size);
             elements = newElements;
+        }
+    }
+
+    private void validateIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
         }
     }
 
