@@ -21,11 +21,21 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Product> products = productDAO.getAllProducts();
-        String json = new Gson().toJson(products);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+        String idParam = request.getParameter("id");
+        if (idParam != null) {
+            int id = Integer.parseInt(idParam);
+            Product product = productDAO.getProductById(id);
+            String json = new Gson().toJson(product);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+        } else {
+            List<Product> products = productDAO.getAllProducts();
+            String json = new Gson().toJson(products);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+        }
     }
 
     @Override
