@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
+
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
         try (Connection connection = DatabaseConnection.getConnection();
@@ -21,6 +22,25 @@ public class ProductDAO {
             e.printStackTrace();
         }
         return products;
+    }
+
+    public Product getProductById(int id) {
+        Product product = null;
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE id = ?")) {
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    product = new Product();
+                    product.setId(resultSet.getInt("id"));
+                    product.setName(resultSet.getString("name"));
+                    product.setPrice(resultSet.getDouble("price"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return product;
     }
 
     public void addProduct(Product product) {
