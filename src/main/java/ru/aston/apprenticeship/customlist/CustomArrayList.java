@@ -1,4 +1,4 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.customlist;
 
 import java.util.Arrays;
 import java.util.Collection;
