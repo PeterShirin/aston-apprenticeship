@@ -1,4 +1,4 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc.model;
 
 public class Subcategory {
     private int id;

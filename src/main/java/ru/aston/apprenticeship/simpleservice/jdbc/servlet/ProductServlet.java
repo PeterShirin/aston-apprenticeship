@@ -1,6 +1,8 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc.servlet;
 
 import com.google.gson.Gson;
+import ru.aston.apprenticeship.simpleservice.jdbc.DAO.ProductDAO;
+import ru.aston.apprenticeship.simpleservice.jdbc.model.Product;
 
 import java.io.IOException;
 import java.util.List;

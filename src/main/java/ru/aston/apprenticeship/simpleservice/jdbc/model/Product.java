@@ -1,5 +1,6 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -7,6 +8,13 @@ public class Product {
     private String name;
     private double price;
     private List<Category> categories;
+
+    public void addCategory(Category category) {
+        if (category == null) {
+            categories = new ArrayList<>();
+        }
+        categories.add(category);
+    }
 
     public int getId() {
         return id;

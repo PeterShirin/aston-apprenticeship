@@ -1,4 +1,4 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

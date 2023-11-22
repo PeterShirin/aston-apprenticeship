@@ -1,12 +1,13 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc.model;
 
 import java.util.List;
 
 public class Category {
     private int id;
     private String name;
-    private List<Product> products;
     private List<Subcategory> subcategories;
+
+
 
     public int getId() {
         return id;
@@ -22,14 +23,6 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public List<Subcategory> getSubcategories() {

@@ -1,4 +1,7 @@
-package ru.aston.apprenticeship;
+package ru.aston.apprenticeship.simpleservice.jdbc.DAO;
+
+import ru.aston.apprenticeship.simpleservice.jdbc.DatabaseConnection;
+import ru.aston.apprenticeship.simpleservice.jdbc.model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
