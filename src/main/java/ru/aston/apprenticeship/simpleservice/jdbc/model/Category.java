@@ -1,5 +1,6 @@
 package ru.aston.apprenticeship.simpleservice.jdbc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
@@ -7,7 +8,12 @@ public class Category {
     private String name;
     private List<Subcategory> subcategories;
 
-
+    public void addSubcategory(Subcategory subcategory) {
+        if (subcategory == null) {
+            subcategories = new ArrayList<>();
+        }
+        subcategories.add(subcategory);
+    }
 
     public int getId() {
         return id;
