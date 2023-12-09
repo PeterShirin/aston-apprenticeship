@@ -34,7 +34,7 @@ public class SubcategoryDAO {
     public void addSubcategory(Subcategory subcategory) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(subcategory);
+            session.persist(subcategory);
             transaction.commit();
         }
     }
@@ -42,7 +42,7 @@ public class SubcategoryDAO {
     public void updateSubcategory(Subcategory subcategory) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(subcategory);
+            session.merge(subcategory);
             transaction.commit();
         }
     }
@@ -52,7 +52,7 @@ public class SubcategoryDAO {
             Transaction transaction = session.beginTransaction();
             Subcategory subcategory = session.get(Subcategory.class, id);
             if (subcategory != null) {
-                session.delete(subcategory);
+                session.remove(subcategory);
             }
             transaction.commit();
         }

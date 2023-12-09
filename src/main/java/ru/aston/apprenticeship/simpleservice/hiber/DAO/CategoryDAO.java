@@ -34,7 +34,7 @@ public class CategoryDAO {
     public void addCategory(Category category) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(category);
+            session.persist(category);
             transaction.commit();
         }
     }
@@ -42,7 +42,7 @@ public class CategoryDAO {
     public void updateCategory(Category category) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(category);
+            session.merge(category);
             transaction.commit();
         }
     }
@@ -52,7 +52,7 @@ public class CategoryDAO {
             Transaction transaction = session.beginTransaction();
             Category category = session.get(Category.class, id);
             if (category != null) {
-                session.delete(category);
+                session.remove(category);
             }
             transaction.commit();
         }

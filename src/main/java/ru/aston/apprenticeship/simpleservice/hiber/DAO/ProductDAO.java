@@ -34,7 +34,7 @@ public class ProductDAO {
     public void addProduct(Product product) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.save(product);
+            session.persist(product);
             transaction.commit();
         }
     }
@@ -42,7 +42,7 @@ public class ProductDAO {
     public void updateProduct(Product product) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            session.update(product);
+            session.merge(product);
             transaction.commit();
         }
     }
@@ -52,7 +52,7 @@ public class ProductDAO {
             Transaction transaction = session.beginTransaction();
             Product product = session.get(Product.class, id);
             if (product != null) {
-                session.delete(product);
+                session.remove(product);
             }
             transaction.commit();
         }
